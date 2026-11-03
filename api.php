@@ -23,12 +23,47 @@ function get_db_connection() {
         $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
         // Crear la tabla si no existe
-        $pdo->exec("CREATE TABLE IF NOT EXISTS productos (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nombre TEXT NOT NULL,
-            precio REAL NOT NULL,
-            existencia INTEGER NOT NULL
-        )");
+        $pdo->exec("
+
+CREATE TABLE IF NOT EXISTS clientes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    rfc TEXT UNIQUE,
+    razon_social TEXT NOT NULL,
+    telefono TEXT
+);
+
+CREATE TABLE IF NOT EXISTS unidades (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    marca TEXT NOT NULL,
+    modelo TEXT NOT NULL,
+    year INTEGER NOT NULL,
+    placas TEXT UNIQUE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS choferes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre TEXT NOT NULL,
+    apellido TEXT NOT NULL,
+    telefono TEXT,
+    licencia TEXT UNIQUE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS fletes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    origen TEXT NOT NULL,
+    destino TEXT NOT NULL,
+    estatus TEXT CHECK(estatus IN ('en camino', 'por pagar', 'pagado', 'cancelado')) DEFAULT 'en camino',
+    unidad_id INTEGER NOT NULL,
+    chofer_id INTEGER NOT NULL,
+    cliente_id INTEGER NOT NULL,
+    fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (unidad_id) REFERENCES unidades(id) ON DELETE RESTRICT,
+    FOREIGN KEY (chofer_id) REFERENCES choferes(id) ON DELETE RESTRICT,
+    FOREIGN KEY (cliente_id) REFERENCES clientes(id) ON DELETE RESTRICT
+);
+
+
+            ");
 
         return $pdo;
     } catch (PDOException $e) {
