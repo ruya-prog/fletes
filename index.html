@@ -10,23 +10,28 @@
     <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 </head>
 <body x-data>
-
-	<h1>Aplicacion de fletes</h1>	
-	<h2>Subtítulo</h2>
-
-	<a x-link href="/">Home</a>
-	<a x-link href="/about">About</a>
-
-	
-	<template x-route="/"      template.preload="./plantillas/home.html"></template>	
-	<template x-route="/about" template.preload="./plantillas/about.html"></template>
-
-	<template x-route.notfound>
-		<main>
-			<img src="notfound.png" alt="">
-		</main>
-	</template>
+	<aside>
+		<a x-link href="/">Inicio</a>
+		<a x-link href="/unidades">Unidades</a>		
+		<a x-link href="/choferes">Choferes</a>		
+		<a x-link href="/clientes">Clientes</a>		
+		<a x-link href="/fletes">Fletes</a>
+	</aside>
+	<main>
+		<template x-route="/"      template.preload="./plantillas/home.html"></template>	
+		<template x-route="/about" template.preload="./plantillas/about.html"></template>
 
 
+
+		<template x-route.notfound>
+			<img class="error404" src="notfound.png" alt="">
+		</template>		
+
+
+
+
+
+
+	</main>
 </body>
 </html>

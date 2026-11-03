@@ -1,6 +1,37 @@
+body{
+	display: flex;
+	max-width: unset;
+	padding: 0;	
+	margin: 0;
+	height: 100vh;
+}
+aside{
+	flex: 0 0 15em;
+	background: steelblue;
+}
+aside a{
+	line-height: 2em;
+	text-decoration: none;
+	color: white;
+	display: block;
+	padding-left: 1em;
+}
+aside a:hover{
+	text-decoration: none;
+	background: #0002;
+}
+main{
+	flex: 1;
+	padding: 1em;
+}
+
 label{
 	display: block;
 }
 input, select{
 	width: 100%;
+}
+img.error404{
+	margin: 3em auto 0;
+	display: block;
 }
