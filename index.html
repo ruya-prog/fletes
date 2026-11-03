@@ -16,15 +16,14 @@
 
 	<a x-link href="/">Home</a>
 	<a x-link href="/about">About</a>
-	<a x-link href="/sergio">Sergio</a>
 
 	
 	<template x-route="/"      template.preload="./plantillas/home.html"></template>	
 	<template x-route="/about" template.preload="./plantillas/about.html"></template>
 
-	<template x-route="/sergio">
+	<template x-route.notfound>
 		<main>
-			<p>Hola, soy Sergio</p>			
+			<img src="notfound.png" alt="">
 		</main>
 	</template>
 
