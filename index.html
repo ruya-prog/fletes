@@ -3,37 +3,31 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Fletemático</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
 	<link rel="stylesheet" type="text/css" href="estilo.css">
+    <script src="https://unpkg.com/@shaun/alpinejs-router@1.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 </head>
-<body>
-	<h1>Título</h1>	
+<body x-data>
+
+	<h1>Aplicacion de fletes</h1>	
 	<h2>Subtítulo</h2>
 
+	<a x-link href="/">Home</a>
+	<a x-link href="/about">About</a>
+	<a x-link href="/sergio">Sergio</a>
 
-	<form>
-	<label>Nombre: <input type="text" name=""></label>
-	<label>Fecha: <input type="date" name=""></label>
-	<label>Continente:
-		<select>
-			<option>América</option>
-			<option>África</option>
-			<option>Europa</option>
-			<option>Asia</option>
-		</select>
-	</label>
-	</form>
 	
+	<template x-route="/"      template.preload="./plantillas/home.html"></template>	
+	<template x-route="/about" template.preload="./plantillas/about.html"></template>
 
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	<template x-route="/sergio">
+		<main>
+			<p>Hola, soy Sergio</p>			
+		</main>
+	</template>
 
 
-	<p>Ya no hay tabla :-)</p>
 </body>
 </html>
