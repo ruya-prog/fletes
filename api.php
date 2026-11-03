@@ -85,21 +85,39 @@ function responder($status_code, $data) {
 /**
  * Maneja las peticiones GET (Obtener todos o uno por ID)
  */
-function get_productos($pdo, $id = null) {
+function get_clientes($pdo, $id = null) {
     if ($id) {
-        $stmt = $pdo->prepare("SELECT * FROM productos WHERE id = :id");
+        $stmt = $pdo->prepare("SELECT * FROM clientes WHERE id = :id");
         $stmt->execute([':id' => $id]);
-        $producto = $stmt->fetch();
+        $cliente = $stmt->fetch();
 
-        if ($producto) {
-            responder(200, $producto);
+        if ($cliente) {
+            responder(200, clientes);
         } else {
-            responder(404, ["mensaje" => "Producto no encontrado"]);
+            responder(404, ["mensaje" => "Cliente no encontrado"]);
         }
     } else {
-        $stmt = $pdo->query("SELECT * FROM productos");
-        $productos = $stmt->fetchAll();
-        responder(200, $productos);
+        $stmt = $pdo->query("SELECT * FROM clientes");
+        $clientes = $stmt->fetchAll();
+        responder(200, $clientes);
+    }
+}
+// ==========================================
+function get_choferes($pdo, $id = null) {
+    if ($id) {
+        $stmt = $pdo->prepare("SELECT * FROM choferes WHERE id = :id");
+        $stmt->execute([':id' => $id]);
+        $chofer = $stmt->fetch();
+
+        if ($cliente) {
+            responder(200, choferes);
+        } else {
+            responder(404, ["mensaje" => Chofer no encontrado"]);
+        }
+    } else {
+        $stmt = $pdo->query("SELECT * FROM choferes");
+        $choferes = $stmt->fetchAll();
+        responder(200, $choferes);
     }
 }
 
